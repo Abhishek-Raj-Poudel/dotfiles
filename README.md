@@ -1,4 +1,4 @@
-#My Dotfiles
+# My Dotfiles
 
 **Steps to make this thing work**
 1. Install gnu stow
@@ -24,7 +24,7 @@ cd dotfile
 stow .
 ```
 
-##Note
+## Note
 
 Backup any file in this project from your pc. For eg like make a backup of you .zshrc into something like .zshrc.bak
 
