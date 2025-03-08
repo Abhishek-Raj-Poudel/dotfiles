@@ -1,6 +1,14 @@
 # My Dotfiles
 
-**Steps to make this thing work**
+## This has the following things
+1. .zshrc
+2. i3
+3. kitty
+4. nvim
+5. polybar
+6. rofi
+
+### Steps to make this thing work
 1. Install gnu stow
 
 ```sh
