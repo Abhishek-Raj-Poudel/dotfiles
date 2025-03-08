@@ -26,6 +26,6 @@ stow .
 
 ## Note
 
-Backup any file in this project from your pc. For eg like make a backup of you .zshrc into something like .zshrc.bak
+Backup any file in this project from your pc. For eg like make a backup of you `.zshrc` into something like `.zshrc.bak`
 
 
