@@ -24,7 +24,7 @@ git clone git@github.com:Abhishek-Raj-Poudel/dotfiles.git
 4. Then go to that folder
 
 ```sh
-cd dotfile
+cd dotfiles
 ```
 5. Once your in that folder do this
 
