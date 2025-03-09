@@ -1,5 +1,6 @@
 
 set $mod Mod4
+set $alt Mod1
 
 font pango:JetBrainsMono Nerd Font Mono 8
 
@@ -62,9 +63,9 @@ bindsym Print exec maim | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -se
 bindsym $mod+shift+s exec maim -s | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -selection clipboard -t image/png
 
 # change focus
-bindsym alt+tab focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
+bindsym $alt+Tab focus left
+# bindsym $mod+k focus down
+# bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
@@ -92,7 +93,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+l fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -195,3 +196,6 @@ bindsym $mod+r mode "resize"
 # Check if Polybar is already running
 exec --no-startup-id pgrep -x polybar > /dev/null || polybar example &
 # exec_always --no-startup-id polybar example & 
+
+# wallpaper
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
