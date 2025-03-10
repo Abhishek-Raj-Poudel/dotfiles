@@ -62,6 +62,10 @@ bindsym Print exec maim | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -se
 #selection
 bindsym $mod+shift+s exec maim -s | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -selection clipboard -t image/png
 
+# cycle through workspace
+bindsym $mod+Control+k workspace next
+bindsym $mod+Control+j workspace prev
+
 # change focus
 bindsym $alt+Tab focus left
 # bindsym $mod+k focus down
