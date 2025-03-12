@@ -7,6 +7,7 @@
 4. nvim
 5. polybar
 6. rofi
+7. picom
 
 ### Steps to make this thing work
 1. Install gnu stow
