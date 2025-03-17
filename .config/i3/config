@@ -185,4 +185,6 @@ bindsym $mod+r mode "resize"
 # Check if Polybar is already running
 exec --no-startup-id pgrep -x polybar > /dev/null || polybar example &
 # wallpaper
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg &
+
+exec --no-startup-id picom --daemon &
