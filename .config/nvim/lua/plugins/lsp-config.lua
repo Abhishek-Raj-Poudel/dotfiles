@@ -9,7 +9,7 @@ local servers = {
   "zls",
   "pyright",
   "intelephense",
-  "gopls",
+  -- "golangci_lint_ls",
   "stimulus_ls",
 }
 return {
