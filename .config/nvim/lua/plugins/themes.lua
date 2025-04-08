@@ -9,13 +9,13 @@ return {
       comments = { "italic" },   -- Change the style of comments
       conditionals = { "italic" },
       loops = {},
-      functions = {},
-      keywords = {},
+      functions = {"bold"},
+      keywords = {"italic"},
       strings = {},
-      variables = {},
+      variables = {"bold"},
       numbers = {},
       booleans = {},
-      properties = {},
+      properties = {"bold"},
       types = {},
       operators = {},
       -- miscs = {}, -- Uncomment to turn off hard-coded styles
