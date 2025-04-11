@@ -23,6 +23,3 @@ vim.opt.smartcase = true
 -- Define the gen.nvim command mapping
 vim.keymap.set({ 'n', 'v' }, '<leader>]', ':Gen<CR>')
 
-
--- Enable Code folding
--- set foldmethod = indent
