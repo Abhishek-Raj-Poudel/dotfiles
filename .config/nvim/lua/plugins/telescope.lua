@@ -8,8 +8,10 @@ return {
       local builtin = require('telescope.builtin')
 
       -- Telescope key bindings
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+      vim.keymap.set('n', '<leader>ff', builtin.find_files, { noremap = true, silent = true, desc = "Fine File" })
+      vim.keymap.set('n', '<leader>fg', builtin.live_grep, { noremap = true, silent = true, desc = "Fine text in Files" })
+
+      vim.keymap.set('n', '<leader>ft', '<cmd>TodoTelescope<cr>', {noremap=true, silent=true, desc="Find All Todos"})
 
       -- Telescope setup
       telescope.setup({
@@ -22,8 +24,8 @@ return {
             '--line-number',
             '--column',
             '--smart-case',
-            '--hidden', -- Include hidden files
-            '--no-ignore', -- Do not respect .gitignore or .ignore
+            '--hidden',              -- Include hidden files
+            '--no-ignore',           -- Do not respect .gitignore or .ignore
           },
           file_ignore_patterns = {}, -- Ensure no ignore patterns block .env
         },

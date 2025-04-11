@@ -23,3 +23,7 @@ vim.opt.smartcase = true
 -- Define the gen.nvim command mapping
 vim.keymap.set({ 'n', 'v' }, '<leader>]', ':Gen<CR>')
 
+
+-- Both of them do the same thing 
+vim.keymap.set('n','<C-\\>','<cmd>vs<cr>',{noremap=true, silent=true,desc="Split vertically"})
+vim.keymap.set('n','<leader>\\','<cmd>vs<cr>',{noremap=true, silent=true,desc="Split vertically"})
