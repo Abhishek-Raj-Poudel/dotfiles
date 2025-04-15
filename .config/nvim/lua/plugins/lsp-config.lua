@@ -1,108 +1,5 @@
--- local servers = {
---   "lua_ls",
---   "html",
---   "emmet_language_server",
---   "cssls",
---   "jsonls",
---   "ts_ls",
---   "volar",
---   "tailwindcss",
---   "zls",
---   "pyright",
---   "intelephense",
---   "stimulus_ls",
--- }
---
--- return {
---   {
---     "williamboman/mason.nvim",
---     config = function()
---       require("mason").setup({})
---     end,
---   },
---   {
---     "williamboman/mason-lspconfig.nvim",
---     dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
---     config = function()
---       require("mason-lspconfig").setup({
---         ensure_installed = servers,
---         automatic_installation = true,
---       })
---     end,
---   },
---   {
---     "neovim/nvim-lspconfig",
---     dependencies = { "hrsh7th/cmp-nvim-lsp" }, -- Make sure cmp-nvim-lsp is added as a dependency
---     config = function()
---       local capabilities = require("cmp_nvim_lsp").default_capabilities()
---       local lspconfig = require("lspconfig")
---       -- Define the on_attach function
---       local on_attach = function(_, bufnr)
---         -- Configure diagnostic display settings
---         vim.diagnostic.config({
---           virtual_text = true,      -- Show errors inline
---           signs = true,             -- Show signs in the gutter
---           underline = true,         -- Underline the problematic code
---           update_in_insert = false, -- Don't update diagnostics in insert mode
---           severity_sort = true,     -- Sort diagnostics by severity
---           float = {                 -- Configure the look of the floating window for diagnostics
---             source = "always",      -- Show the source of the diagnostic
---             border = "rounded",
---             style = "minimal",
---           },
---         })
---         -- Keymaps for LSP features
---         local opts = { buffer = bufnr, noremap = true, silent = true }
---         vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, opts)
---         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
---         vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
---         vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
---         vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
---         vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
---         vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
---       end
---
---       -- Special configuration for Volar
---       if vim.fn.executable("vue-language-server") == 1 then
---         lspconfig.volar.setup({
---           capabilities = capabilities,
---           on_attach = on_attach,
---           filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
---           init_options = {
---             typescript = {
---               tsdk = vim.fn.expand("$HOME/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib")
---               -- Adjust the path if your TypeScript SDK is elsewhere
---             }
---           }
---         })
---       end
---       -- Loop through servers and configure them
---       for _, server_name in ipairs(servers) do
---         -- Skip Volar as we've already configured it specially
---         if server_name ~= "volar" then
---           local server_opts = {
---             capabilities = capabilities,
---             on_attach = on_attach,
---           }
---           -- Server-specific settings
---           if server_name == "lua_ls" then
---             server_opts.settings = {
---               Lua = {
---                 diagnostics = {
---                   globals = { "vim" } -- Recognize vim as a global
---                 }
---               }
---             }
---           end
---           lspconfig[server_name].setup(server_opts)
---         end
---       end
---     end,
---   },
--- }
-
 return
-{
+  {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -307,13 +204,66 @@ return
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
-        volar={},
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-         ts_ls = {
-
-  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+        -- Vue 3        
+        volar = {
+          init_options = {
+            vue = {
+              hybridMode = false,
+            },
+          },
+          settings = {
+            typescript = {
+              inlayHints = {
+                enumMemberValues = {
+                  enabled = true,
+                },
+                functionLikeReturnTypes = {
+                  enabled = true,
+                },
+                propertyDeclarationTypes = {
+                  enabled = true,
+                },
+                parameterTypes = {
+                  enabled = true,
+                  suppressWhenArgumentMatchesName = true,
+                },
+                variableTypes = {
+                  enabled = true,
+                },
+              },
+            },
+          },
         },
-        --
+        -- TypeScript
+        ts_ls = {
+          init_options = {
+            plugins = {
+              {
+                name = '@vue/typescript-plugin',
+                location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+                languages = { 'vue' },
+              },
+            },
+          },
+          settings = {
+            typescript = {
+              tsserver = {
+                useSyntaxServer = false,
+              },
+              inlayHints = {
+                includeInlayParameterNameHints = 'all',
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+          },
+        },
 
         lua_ls = {
           -- cmd = { ... },
