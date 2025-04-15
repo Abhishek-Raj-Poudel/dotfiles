@@ -2,6 +2,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ":TSUpdate",
+    dependencies = {'theHamsta/nvim-treesitter-pairs'},
     config = function()
       local configs = require("nvim-treesitter.configs")
       configs.setup({
@@ -11,6 +12,8 @@ return {
         highlight = { enable = true },
         indent = { enable = true }
       })
+
+
       -- Set Neovim to use Treesitter for folding
       vim.opt.foldmethod = "expr"
       vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
