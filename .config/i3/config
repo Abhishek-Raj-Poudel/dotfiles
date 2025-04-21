@@ -59,6 +59,16 @@ bindsym $mod+shift+s exec maim -s | tee ~/Pictures/Screenshots/$(date +%s).png |
 # cycle through workspace
 bindsym $mod+Control+k workspace next
 bindsym $mod+Control+j workspace prev
+#---------------------Screenshots end---------------------#
+
+
+#---------------------Launch Software---------------------#
+
+bindsym $mod+Shift+b exec --no-startup-id brave
+bindsym $mod+Shift+n exec --no-startup-id obsidian
+bindsym $mod+Shift+f exec --no-startup-id thunar
+
+#---------------------Launch Software end---------------------#
 
 # change focus
 bindsym $alt+Tab focus left
@@ -185,4 +195,6 @@ bindsym $mod+r mode "resize"
 # Check if Polybar is already running
 exec --no-startup-id pgrep -x polybar > /dev/null || polybar example &
 # wallpaper
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg &
+
+exec --no-startup-id picom --daemon &
