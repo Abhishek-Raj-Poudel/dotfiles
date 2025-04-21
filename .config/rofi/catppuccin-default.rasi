@@ -27,6 +27,7 @@
   normal-foreground:           @foreground;
   alternate-urgent-foreground: @red;
   alternate-active-foreground: @blue;
+  font: "Operator Mono Lig 12";
 
 }
 element {

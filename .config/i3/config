@@ -41,6 +41,7 @@ tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec kitty 
+bindsym $mod+Shift+b exec brave 
 
 
 # kill focused window
@@ -50,11 +51,12 @@ bindsym $mod+Shift+q kill
 bindsym $mod+space exec --no-startup-id rofi -show drun
 
 
-#---------------------Screenshots---------------------#
+#-------------------- Screenshots start -------------------#
 #current window
 bindsym Print exec maim | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -selection clipboard -t image/png
 #selection
 bindsym $mod+shift+s exec maim -s | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -selection clipboard -t image/png
+#-------------------- Screenshots End ---------------------#
 
 # cycle through workspace
 bindsym $mod+Control+k workspace next
@@ -191,10 +193,22 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#polybar launch
-# Check if Polybar is already running
+# ==================== Auto starts ==================== #
+
+# Check if Polybar is already running && polybar launch
 exec --no-startup-id pgrep -x polybar > /dev/null || polybar example &
+
 # wallpaper
 exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg &
-
 exec --no-startup-id picom --daemon &
+
+# Start Obsidian in workspace 1
+# exec --no-startup-id i3-msg "workspace 1; exec obsidian"
+
+# Start Brave in workspace 2
+# exec --no-startup-id i3-msg "workspace 2; exec brave"
+
+# Start Kitty in workspace 3
+# exec --no-startup-id i3-msg "workspace 3; exec kitty"
+
+# ==================== Auto ends ==================== #

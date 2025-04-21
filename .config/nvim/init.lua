@@ -24,5 +24,6 @@ vim.opt.smartcase = true
 vim.keymap.set({ 'n', 'v' }, '<leader>]', ':Gen<CR>')
 
 
--- Enable Code folding
--- set foldmethod = indent
+-- Both of them do the same thing 
+vim.keymap.set('n','<C-\\>','<cmd>vs<cr>',{noremap=true, silent=true,desc="Split vertically"})
+vim.keymap.set('n','<leader>\\','<cmd>vs<cr>',{noremap=true, silent=true,desc="Split vertically"})
