@@ -14,11 +14,11 @@ exec --no-startup-id nm-applet
  default_border pixel 2 
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #ffb000    #000000    #ffffff    #2e9ef4   #cba6f7
-client.focused_inactive #ffffff    #5f676a #ffffff    #484e50   #313244
-client.unfocused        #33333    #222222    #888888    #292d2e   #313244
-client.urgent           #ffffff    #f38ba8 #ffffff    #f38ba8   #f38ba8
-client.placeholder      #000000    #0c0c0c #ffffff    #0c0c0c   #ffffff
+client.focused          #fff    #000    #fff    #2e9ef4   #cba6f7
+client.focused_inactive #fff    #5f676a #fff    #484e50   #313244
+client.unfocused        #333    #222    #888    #292d2e   #313244
+client.urgent           #fff    #f38ba8 #fff    #f38ba8   #f38ba8
+client.placeholder      #000    #0c0c0c #fff    #0c0c0c   #fff
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -66,7 +66,7 @@ bindsym $mod+Control+j workspace prev
 
 #---------------------Launch Software---------------------#
 
-# bindsym $mod+Shift+b exec --no-startup-id brave
+bindsym $mod+Shift+b exec --no-startup-id brave
 bindsym $mod+Shift+n exec --no-startup-id obsidian
 bindsym $mod+Shift+f exec --no-startup-id thunar
 
@@ -197,7 +197,7 @@ bindsym $mod+r mode "resize"
 
 # Check if Polybar is already running && polybar launch
 exec --no-startup-id pgrep -x polybar > /dev/null || polybar example &
-exec --no-startup-id ~/.config/i3/script/toggle_polybar.sh
+
 # wallpaper
 exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg &
 exec --no-startup-id picom --daemon &
@@ -212,3 +212,5 @@ exec --no-startup-id picom --daemon &
 # exec --no-startup-id i3-msg "workspace 3; exec kitty"
 
 # ==================== Auto ends ==================== #
+:q
+
