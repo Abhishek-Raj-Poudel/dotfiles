@@ -1,17 +1,14 @@
 #!/bin/bash
 
-# Requires: xprop, xdotool, polybar
-
 while true; do
-    focused_window=$(xdotool getwindowfocus getwindowname)
+    # Get window count on current workspace
+    window_count=$(i3-msg -t get_tree | jq '.. | select(.type?) | select(.type=="workspace" and .focused==true) | .nodes | length')
 
-    if [ "$focused_window" != "" ]; then
-        # Hide polybar
+    if [ "$window_count" -gt 0 ]; then
         polybar-msg cmd hide
     else
-        # Show polybar
         polybar-msg cmd show
     fi
 
-    sleep 1  # check every second
+    sleep 1
 done
