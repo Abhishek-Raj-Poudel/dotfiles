@@ -11,10 +11,10 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 #style
- default_border pixel 2 
+ default_border pixel 1 
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #ffb000    #000000    #ffffff    #2e9ef4   #cba6f7
+client.focused          #ffb000    #000000    #ffffff    #ffb000   #ffb000
 client.focused_inactive #ffffff    #5f676a #ffffff    #484e50   #313244
 client.unfocused        #33333    #222222    #888888    #292d2e   #313244
 client.urgent           #ffffff    #f38ba8 #ffffff    #f38ba8   #f38ba8

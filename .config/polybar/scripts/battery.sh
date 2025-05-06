@@ -55,7 +55,7 @@ elif [ "$status" = "Charging" ] || [ "$status" = "Unknown" ]; then
   elif [ "$capacity" -le 90 ]; then
     echo "󰂋 $capacity%" # Charging bolt + 90%
   else # Implicitly capacity > 90 and <= 100
-    echo "󰂅 $capacity%" # Charging bolt + 100% (use the full charging icon)
+    echo "󰁹 $capacity%" # Charging bolt + 100% (use the full charging icon)
  fi
 
 # 3. Handle the "Discharging" state
@@ -79,7 +79,7 @@ elif [ "$status" = "Discharging" ]; then
   elif [ "$capacity" -le 90 ]; then
     echo "󰂂 $capacity%" # 90%
   else # Implicitly capacity > 90 and <= 100
-    echo "" # Show nothing if full 
+    echo "󰁹" # Show nothing if full 
  fi
 
 # 4. Handle any other unexpected status
