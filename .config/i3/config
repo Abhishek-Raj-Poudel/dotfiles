@@ -207,6 +207,7 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id pgrep -x polybar > /dev/null || polybar example &
 exec --no-startup-id ./script/toggle_polybar.sh
 # wallpaper
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg &
+# exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg &
+exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpaper/* &
 exec --no-startup-id picom --daemon &
 
