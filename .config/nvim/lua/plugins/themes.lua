@@ -58,8 +58,8 @@ return {
 
       -- IMPORTANT NOTE ON BACKGROUND OVERRIDE:
       -- Setting Normal bg to #000000 overrides Rosé Pine's background. Use with caution.
-      -- vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
-      -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#000000" })
+      vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#000000" })
     end,
   },
 }
