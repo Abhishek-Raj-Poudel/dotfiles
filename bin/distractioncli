@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# distractioncli
+
+# Define the path to the distraction list
+DISTRACTION_FILE="$HOME/Documents/my-notes/DistractionList.md"
+
+# Check if an argument was provided
+if [ -z "$1" ]; then
+  echo "Error: No input text provided."
+  echo "Usage: ./distractioncli \"Your distracting thought\""
+  exit 1
+fi
+
+# Append the text to the file in the desired format
+echo "- [ ] $1" >> "$DISTRACTION_FILE"
+echo "✅ Added to DistractionList: \"$1\""

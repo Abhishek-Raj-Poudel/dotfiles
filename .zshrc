@@ -78,3 +78,5 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 export PATH="/home/abhi/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/home/abhi/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+
+export PATH="$HOME/bin:$PATH"
