@@ -50,6 +50,9 @@ bindsym $mod+Shift+q kill
 # start rofi (a program launcher)
 bindsym $mod+space exec --no-startup-id rofi -show drun
 
+# Power Menu Rofi (For shutting down your pc, For this to work you must have rofi-power-menu in your rofi/scripts folder in your .config folder)
+bindsym $mod+Shift+x exec --no-startup-id rofi -show power-menu -modi power-menu:~/.config/rofi/scripts/rofi-power-menu.sh
+
 #############################
 #     Screenshots start     #
 #############################

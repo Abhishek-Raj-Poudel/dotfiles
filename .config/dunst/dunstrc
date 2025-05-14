@@ -1,16 +1,16 @@
 [global]
-geometry = "bottom-right"
-frame_color = "#89b4fa"
+origin = bottom-right
+frame_width = 1
 separator_color = "frame"
 highlight = "#89b4fa"
+background = "#000"
+foreground = "#cdd6f4"
 
 [urgency_low]
-background = "#000"
-foreground = "#cdd6f4"
+frame_color = "#ffffff"
 
 [urgency_normal]
-background = "#000"
-foreground = "#cdd6f4"
+frame_color = "#ffb000"
 
 [urgency_critical]
 background = "#000"
