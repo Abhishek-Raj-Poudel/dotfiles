@@ -27,3 +27,9 @@ vim.keymap.set({ 'n', 'v' }, '<leader>]', ':Gen<CR>')
 -- Both of them do the same thing 
 vim.keymap.set('n','<C-\\>','<cmd>vs<cr>',{noremap=true, silent=true,desc="Split vertically"})
 vim.keymap.set('n','<leader>\\','<cmd>vs<cr>',{noremap=true, silent=true,desc="Split vertically"})
+
+local on_attach = function(_, bufnr)
+    local opts = {noremap = true, silent = true}
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>e',
+                                '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+end

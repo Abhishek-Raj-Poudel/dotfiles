@@ -80,3 +80,9 @@ export PATH="/home/abhi/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/home/abhi/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 
 export PATH="$HOME/bin:$PATH"
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/abhi/.config/.dart-cli-completion/zsh-config.zsh ]] && . /home/abhi/.config/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+

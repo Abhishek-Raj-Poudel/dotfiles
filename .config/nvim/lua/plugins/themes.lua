@@ -1,65 +1,51 @@
-return {
-  {
-    "rose-pine/neovim",
-    name = "rose-pine",
-    priority = 1000,
-    opts = {
-      variant = "main", -- Set to "moon" (darkest), "main" (default dark), or "dawn" (light)
-      dark_variant = "main", -- Ensure this is also moon if you dynamically change Vim's 'background'
-      -- disable_background = false, -- Set to true for transparency
-      -- disable_float_background = false, -- Set to true for transparent floats
-      disable_italics = false, -- Ensure italics are enabled
-      disable_bold = false,    -- Ensure bold is enabled
-      disable_underline = false,-- Ensure underline is enabled
-      terminal_colors = true, -- Make terminal colors match
-      dim_inactive_windows = false, -- Don't dim inactive windows
-      styles = {
-        comments = "italic",
-        conditionals = "italic",
-        loops = "italic",
-        functions = "bold",
-        keywords = "italic",
-        strings = "none",
-        variables = "none",
-        numbers = "none",
-        booleans = "italic",
-        properties = "italic",
-        types = "bold_italic",
-        operators = "none",
-      },
-      -- highlight_groups expects a TABLE, not a function returning a table.
-      -- We will define custom highlights needing palette colors in the config function instead.
-      -- You could put static overrides here if they don't need palette colors.
-      highlight_groups = {
-         -- Example of a static override (doesn't need palette):
-         -- VertSplit = { fg = "#somecolor", bg = "none" },
-         -- We removed the @constant definitions here as they need the palette.
-      }
-      -- Note: Leaving highlight_groups empty or omitting it is also fine if you only have
-      -- dynamic highlights defined in config.
+require("catppuccin").setup({
+    flavour = "auto", -- latte, frappe, macchiato, mocha
+    background = { -- :h background
+        light = "latte",
+        dark = "mocha",
     },
-    config = function(_, opts)
-      -- Load the colorscheme using the setup function FIRST
-      require("rose-pine").setup(opts)
-      vim.cmd("colorscheme rose-pine") -- Apply the theme
+    transparent_background = false, -- disables setting the background color.
+    show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+    term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
+    dim_inactive = {
+        enabled = false, -- dims the background color of inactive window
+        shade = "dark",
+        percentage = 0.15, -- percentage of the shade to apply to the inactive window
+    },
+    no_italic = false, -- Force no italic
+    no_bold = false, -- Force no bold
+    no_underline = false, -- Force no underline
+    styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+        comments = { "italic" }, -- Change the style of comments
+        conditionals = { "italic" },
+        loops = {},
+        functions = {},
+        keywords = {},
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+        operators = {},
+        -- miscs = {}, -- Uncomment to turn off hard-coded styles
+    },
+    color_overrides = {},
+    custom_highlights = {},
+    default_integrations = true,
+    integrations = {
+        cmp = true,
+        gitsigns = true,
+        nvimtree = true,
+        treesitter = true,
+        notify = false,
+        mini = {
+            enabled = true,
+            indentscope_color = "",
+        },
+        -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+    },
+})
 
-      -- NOW apply custom highlights that require palette colors
-      -- Access the palette after the theme is loaded
-      local palette = require("rose-pine.palette")
-      if palette then -- Ensure palette loaded correctly
-          vim.api.nvim_set_hl(0, "@constant", { fg = palette.iris, bold = true })
-          vim.api.nvim_set_hl(0, "@constant.builtin", { fg = palette.gold, bold = true, italic = true })
-
-          -- Add any other custom highlights here using vim.api.nvim_set_hl
-          -- vim.api.nvim_set_hl(0, "MyCustomGroup", { fg = palette.foam, bg = palette.base, italic = true })
-      else
-          vim.notify("Could not load rose-pine palette for custom highlights", vim.log.levels.WARN)
-      end
-
-      -- IMPORTANT NOTE ON BACKGROUND OVERRIDE:
-      -- Setting Normal bg to #000000 overrides Rosé Pine's background. Use with caution.
-      vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
-      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#000000" })
-    end,
-  },
-}
+-- setup must be called before loading
+vim.cmd.colorscheme "catppuccin"
